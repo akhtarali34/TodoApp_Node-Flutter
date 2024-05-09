@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:node_todo_app/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'dashbord.dart';
 // import 'loginPage.dart';
 
 
@@ -31,8 +33,7 @@ class MyApp extends StatelessWidget {
           primaryColor: Colors.black,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        // home: (token != null && JwtDecoder.isExpired(token) == false )?Dashboard(token: token):SignInPage()/
-      home: SignInPage(),
+        home: (token != null && JwtDecoder.isExpired(token) == false )?Dashboard(token: token):SignInPage()
     );
   }
 }

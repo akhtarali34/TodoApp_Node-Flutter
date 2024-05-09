@@ -27,7 +27,15 @@ userSchema.pre('save',async function(){
     const hashPass = await(bcrypt.hash(user.password,salt));
 
     user.password =hashPass;
-})
+});
+
+userSchema.methods.comparePassword = async function(userPassword){
+try{
+    const isMatch = await bcrypt.compare(userPassword, this.password);
+}catch(error){
+    throw error;
+}
+}
 
 const userModel = db.model("user", userSchema);
 

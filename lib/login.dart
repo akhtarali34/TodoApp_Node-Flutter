@@ -8,6 +8,7 @@ import 'package:velocity_x/velocity_x.dart';
 import 'applogo.dart';
 import 'package:http/http.dart' as http;
 import 'config.dart';
+import 'dashbord.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -46,10 +47,9 @@ class _SignInPageState extends State<SignInPage> {
 
       var jsonResponse = jsonDecode(response.body);
       if(jsonResponse['status']){
-        // var myToken = jsonResponse['token'];
-        // prefs.setString('token', myToken);
-        // Navigator.push(context, MaterialPageRoute(builder: (context)=>Dashboard(token: myToken)));
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>SignInPage()));
+        var myToken = jsonResponse['token'];
+        prefs.setString('token', myToken);
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>Dashboard(token: myToken)));
       }else{
         print('Something went wrong');
       }
